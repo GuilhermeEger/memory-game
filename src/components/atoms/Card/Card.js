@@ -3,8 +3,8 @@ import "./Card.css";
 
 function Card(props){
   return (
-    <div>
-        <div className="cardField" />
+    <div className="imageField">
+        <div>{props.src}</div>
     </div>
   )
 };
