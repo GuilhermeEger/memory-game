@@ -4,7 +4,7 @@ import "./Icon.css"
 
 function Icon(props){
   return (
-    <div className="icon">
+    <div className={props.className ? props.className : "icon"}>
       {projectIcons[props.src]}
     </div>
   )

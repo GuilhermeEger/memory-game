@@ -8,6 +8,8 @@ import { PiBoatBold } from "react-icons/pi";
 import { PiBoneBold } from "react-icons/pi";
 import { PiButterflyBold } from "react-icons/pi";
 import { PiCakeBold } from "react-icons/pi";
+import { PiSmileyXEyes } from "react-icons/pi";
+import { PiBaby } from "react-icons/pi";
 
 
 const projectIcons = {
@@ -20,7 +22,9 @@ const projectIcons = {
     boat : <PiBoatBold />,
     bone : <PiBoneBold />,
     butterfly : <PiButterflyBold />,
-    cake : <PiCakeBold />
+    cake : <PiCakeBold />,
+    smileXEyes : <PiSmileyXEyes />,
+    baby : <PiBaby />
 }
 
 export default projectIcons;

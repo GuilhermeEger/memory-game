@@ -1,0 +1,19 @@
+.defaultButton {
+    float: right;
+    color: white;
+    font-size: 20px;
+    background: #4b33ff6e;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap:5px
+}
+
+.ButtonIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}

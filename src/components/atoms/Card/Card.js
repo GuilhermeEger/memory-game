@@ -4,7 +4,7 @@ import Icon from "../Icon/Icon";
 
 function Card(props) {
   return (
-    <div className={"cardsWrap "}>
+    <div className="cardsWrap">
       <div
         className={"imageFieldFront " + (props.selected ? "flippledCard" : "")}
       >

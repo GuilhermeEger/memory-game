@@ -6,7 +6,74 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
     gap:3px
+}
+
+.leftConfetti {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.rightConfetti {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+}
+
+.cardsFieldRotate .cardsWrap {
+    transform: rotateY(1440deg);
+    transition: 2s ease-in-out;
+}
+
+.congratulation {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    background: #ffffffd6;
+    border-radius: 5px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gameFooter {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 80px);
+    width: 100%;
+}
+
+.gameHeader {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -60px);
+    display: flex;
+    gap:10px;
+    z-index: 2;
+}
+
+.turnsPanel {
+    float: left;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.hardGameModeGrid {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.easyGameModeGrid {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 250px;
 }
