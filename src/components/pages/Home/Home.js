@@ -1,10 +1,10 @@
 import React from "react"
-import GameField from "../../organisms/GameField/GameField";
+import MemoryGame from "../../organisms/MemoryGame/MemoryGame";
 
 function Home(props){
   return (
     <div>
-      <GameField />
+      <MemoryGame />
     </div>
   )
 };
