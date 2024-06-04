@@ -3,7 +3,6 @@
 }
 
 .imageFieldFront {
-    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,14 +14,15 @@
     top: 0;
     width: 100%;
     background: white;
+    border-radius: 5px;
 }
 
 .imageFieldBack {
-    border: 1px solid black;
     height: 100%;
     width: 100%;
     height: 100%;
-    background: lightcoral;
+    background: #4b33ff;
+    border-radius: 5px;
 }
 
 .flippledCard {

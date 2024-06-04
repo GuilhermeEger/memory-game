@@ -6,6 +6,7 @@ function MemoryGame(props) {
   const [cards, setCards] = useState([]);
   const [firstChoice, setFirstChoice] = useState(null);
   const [secondChoice, setSecongChoice] = useState(null);
+  const [turns, setTurns] = useState(0);
 
   useEffect(() => {
     let images = [
@@ -27,15 +28,18 @@ function MemoryGame(props) {
 
     setCards(suffledCards);
   }, []);
+  
+useEffect(() => {
 
-  function handleChoice(card) {
+  if (cards.length == 0)
+    return
 
-    if (!firstChoice) 
-      setFirstChoice(card);
-    else if (!secondChoice) 
-      setSecongChoice(card);
-    else checkCarMatch(card);
-  }
+  const allMatched = cards.every(card => card.matched === true);
+
+  if(allMatched)
+    return alert("Game finished!")
+
+},[cards])
 
   useEffect(() => {
     if (firstChoice && secondChoice) {
@@ -43,7 +47,14 @@ function MemoryGame(props) {
     }
   }, [firstChoice, secondChoice]);
 
+  function handleChoice(card) {
+    if (!firstChoice) setFirstChoice(card);
+    else if (!secondChoice) setSecongChoice(card);
+    else checkCarMatch(card);
+  }
+
   function checkCarMatch() {
+
     if (firstChoice.src == secondChoice.src) {
       setCards((prevCards) => {
         return prevCards.map((card) => {
@@ -54,17 +65,18 @@ function MemoryGame(props) {
           }
         });
       });
-      resetTurn()
+
+      resetTurn();
     } else {
-      setTimeout(() => resetTurn(),1000) 
+      setTimeout(() => resetTurn(), 1000);
     }
-;
   }
 
   function resetTurn() {
     //console.log("cards", cards);
     setFirstChoice(null);
     setSecongChoice(null);
+    setTurns(turns + 1);
   }
 
   return (
@@ -73,13 +85,18 @@ function MemoryGame(props) {
         {cards.map((card) => {
           return (
             <Card
-              selected={firstChoice == card || secondChoice == card || card.matched == true}
+              selected={
+                firstChoice == card ||
+                secondChoice == card ||
+                card.matched == true
+              }
               onClick={() => handleChoice(card)}
               src={card.src}
             />
           );
         })}
       </div>
+      <div>{turns}</div>
     </div>
   );
 }
