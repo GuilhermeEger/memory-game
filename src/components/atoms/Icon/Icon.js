@@ -1,13 +1,13 @@
 import React from "react"
 import projectIcons from "../../../utils/iconsMap"
-import "./Icons.css"
+import "./Icon.css"
 
-function Icons(props){
+function Icon(props){
   return (
     <div className="icon">
-      {projectIcons["anchor"]}
+      {projectIcons[props.src]}
     </div>
   )
 };
 
-export default Icons;
+export default Icon;

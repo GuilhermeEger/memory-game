@@ -1,13 +1,21 @@
 import React from "react";
 import "./Card.css";
-import Icons from "../Icons/Icons";
+import Icon from "../Icon/Icon";
 
-function Card(props){
+function Card(props) {
   return (
-    <div onClick={() => props.onClick()} className={"imageField " + (props.selected ? "selectedCard" : "")}>
-        <Icons />
+    <div className={"cardsWrap "}>
+      <div
+        className={"imageFieldFront " + (props.selected ? "flippledCard" : "")}
+      >
+        <Icon src={props.src} />
+      </div>
+      <div
+      className={"imageFieldBack"}
+      onClick={() => props.onClick()}
+      />
     </div>
-  )
-};
+  );
+}
 
 export default Card;

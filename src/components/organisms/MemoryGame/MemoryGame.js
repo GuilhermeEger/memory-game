@@ -4,21 +4,21 @@ import "./MemoryGame.css";
 
 function MemoryGame(props) {
   const [cards, setCards] = useState([]);
-  const [firstChoice,setFirstChoice] = useState(null);
-  const [secondChoice,setSecongChoice] = useState(null);
+  const [firstChoice, setFirstChoice] = useState(null);
+  const [secondChoice, setSecongChoice] = useState(null);
 
   useEffect(() => {
-
     let images = [
-      { src: "anchor" },
-      { src: "apple" },
-      { src: "avocado" },
-      { src: "balloon" },
-      { src: "bird" },
-      { src: "boat" },
-      { src: "bone" },
-      { src: "butterfly" },
-      { src: "cake" },
+      { src: "anchor", matched: false },
+      { src: "apple", matched: false },
+      { src: "avocado", matched: false },
+      { src: "balloon", matched: false },
+      { src: "bird", matched: false },
+      { src: "bomb", matched: false },
+      { src: "boat", matched: false },
+      { src: "bone", matched: false },
+      { src: "butterfly", matched: false },
+      { src: "cake", matched: false },
     ];
 
     let suffledCards = [...images, ...images]
@@ -28,37 +28,56 @@ function MemoryGame(props) {
     setCards(suffledCards);
   }, []);
 
-  function handleChoice(card){
+  function handleChoice(card) {
 
-    console.log(card);
-
-    if(!firstChoice)
-      setFirstChoice(card)
-    else if (!secondChoice)
-      setSecongChoice(card)
-    else 
-     checkCarMatch();
-
-
+    if (!firstChoice) 
+      setFirstChoice(card);
+    else if (!secondChoice) 
+      setSecongChoice(card);
+    else checkCarMatch(card);
   }
 
-  function checkCarMatch(){
+  useEffect(() => {
+    if (firstChoice && secondChoice) {
+      checkCarMatch();
+    }
+  }, [firstChoice, secondChoice]);
 
-    console.log(firstChoice,secondChoice);
+  function checkCarMatch() {
+    if (firstChoice.src == secondChoice.src) {
+      setCards((prevCards) => {
+        return prevCards.map((card) => {
+          if (card.src == firstChoice.src) {
+            return { ...card, matched: true };
+          } else {
+            return card;
+          }
+        });
+      });
+      resetTurn()
+    } else {
+      setTimeout(() => resetTurn(),1000) 
+    }
+;
+  }
 
-    if(firstChoice.src == secondChoice.src)
-    alert("Win!!")
-
+  function resetTurn() {
+    //console.log("cards", cards);
     setFirstChoice(null);
     setSecongChoice(null);
-
   }
 
   return (
     <div>
       <div className="cardsField">
         {cards.map((card) => {
-          return <Card selected={firstChoice == card || secondChoice == card} onClick={() => handleChoice(card)} src={card.src} />;
+          return (
+            <Card
+              selected={firstChoice == card || secondChoice == card || card.matched == true}
+              onClick={() => handleChoice(card)}
+              src={card.src}
+            />
+          );
         })}
       </div>
     </div>

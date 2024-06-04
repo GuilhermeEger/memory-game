@@ -1,11 +1,30 @@
-.imageField {
+.cardsWrap {
+    position: relative;
+}
+
+.imageFieldFront {
     border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: 0.5s;
+    height: 100%;
+    transform: rotateY(90deg);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: white;
 }
 
-.selectedCard{
-    background-color: red;
+.imageFieldBack {
+    border: 1px solid black;
+    height: 100%;
+    width: 100%;
+    height: 100%;
+    background: lightcoral;
+}
+
+.flippledCard {
+    transform: rotateY(0deg);
 }
