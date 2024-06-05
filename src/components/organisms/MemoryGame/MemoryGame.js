@@ -16,6 +16,24 @@ function MemoryGame(props) {
     suffledCards(gameDifficulty);
   }, []);
 
+  useEffect(() => {
+    if (firstChoice && secondChoice) {
+      checkCarMatch();
+    }
+  }, [firstChoice, secondChoice]);
+
+  useEffect(() => {
+    if (cards.length == 0) return;
+
+    const allMatched = cards.every((card) => card.matched === true);
+
+    if (allMatched) return setGameFinished(true);
+  }, [cards]);
+
+  useEffect(() => {
+    restartGame();
+  }, [gameDifficulty]);
+
   function suffledCards() {
     let images = setImagesList(gameDifficulty);
 
@@ -52,20 +70,6 @@ function MemoryGame(props) {
         { src: "bird", matched: false },
       ]);
   }
-
-  useEffect(() => {
-    if (cards.length == 0) return;
-
-    const allMatched = cards.every((card) => card.matched === true);
-
-    if (allMatched) return setGameFinished(true);
-  }, [cards]);
-
-  useEffect(() => {
-    if (firstChoice && secondChoice) {
-      checkCarMatch();
-    }
-  }, [firstChoice, secondChoice]);
 
   function handleChoice(card) {
     if (!firstChoice) setFirstChoice(card);
@@ -107,16 +111,26 @@ function MemoryGame(props) {
     setGameDifficulty(gameMode);
   }
 
-  useEffect(() => {
-    restartGame();
-  }, [gameDifficulty]);
-
   return (
     <div>
-      <div className={"cardsField " + (gameFinished ? "cardsFieldRotate" : "") + (gameDifficulty+"GameModeGrid")}>
+      <div
+        className={
+          "cardsField " +
+          (gameFinished ? "cardsFieldRotate" : "") +
+          (gameDifficulty + "GameModeGrid")
+        }
+      >
         <div className="gameHeader">
-          <Button iconName="baby" onClick={() => changeDifficult("easy")} label="Easy" />
-          <Button iconName="smileXEyes" onClick={() => changeDifficult("hard")} label="Hard" />
+          <Button
+            iconName="baby"
+            onClick={() => changeDifficult("easy")}
+            label="Easy"
+          />
+          <Button
+            iconName="smileXEyes"
+            onClick={() => changeDifficult("hard")}
+            label="Hard"
+          />
         </div>
 
         <>

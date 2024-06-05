@@ -10,10 +10,7 @@ function Card(props) {
       >
         <Icon src={props.src} />
       </div>
-      <div
-      className={"imageFieldBack"}
-      onClick={() => props.onClick()}
-      />
+      <div className={"imageFieldBack"} onClick={() => props.onClick()} />
     </div>
   );
 }
