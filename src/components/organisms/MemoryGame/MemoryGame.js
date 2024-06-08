@@ -14,7 +14,7 @@ function MemoryGame(props) {
 
   useEffect(() => {
     suffledCards(gameDifficulty);
-  }, []);
+  },[]);
 
   useEffect(() => {
     if (firstChoice && secondChoice) {
@@ -23,7 +23,7 @@ function MemoryGame(props) {
   }, [firstChoice, secondChoice]);
 
   useEffect(() => {
-    if (cards.length == 0) return;
+    if (cards.length === 0) return;
 
     const allMatched = cards.every((card) => card.matched === true);
 
@@ -114,10 +114,7 @@ function MemoryGame(props) {
   return (
     <div>
       <div
-        className={
-          "cardsField " +
-          (gameFinished ? "cardsFieldRotate" : "") +
-          (gameDifficulty + "GameModeGrid")
+        className={"cardsField " + (gameFinished ? "cardsFieldRotate " : "") + (gameDifficulty + "GameModeGrid")
         }
       >
         <div className="gameHeader">
